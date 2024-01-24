@@ -19,5 +19,6 @@ func main() {
 	}
 	config := new(configuration)
 	json.NewDecoder(file).Decode(config)
+	log.Println("Starting web server on address ", config.WebServer)
 	dinowebportal.RubWebPortal(config.WebServer)
 }
