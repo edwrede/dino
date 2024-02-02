@@ -1,6 +1,6 @@
-/*
 package main
 
+/*
 import (
 	"context"
 	"database/sql"
@@ -90,7 +90,7 @@ func ConnectToDB(dbCreds DatabaseCreds) (*sql.DB, *ssh.Client, error) {
 		return nil, nil, err
 	}*/
 
-	/*
+/*
 	// The client configuration with configuration option to use the ssh-agent
 	sshConfig := &ssh.ClientConfig{
 		User:            dbCreds.SSHUser,
@@ -162,5 +162,5 @@ func ConnectToDB(dbCreds DatabaseCreds) (*sql.DB, *ssh.Client, error) {
 			log.Fatal(err)
 		}
 
-	*/
-}*/
+*/
+//}*/

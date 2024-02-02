@@ -25,10 +25,14 @@ func (handler *DinoRESTAPIHandler) searchHandler(w http.ResponseWriter, r *http.
 
 	//Here we are validating our code to make sure that there is a value in the map allocated to SearchCriteria, if not the search criteria path will not be triggered
 	vars := mux.Vars(r)
-	criteria, ok := vars["SearchCriteria"]
+	log.Println(vars)
+	log.Println(vars["searchCriteria"])
+	criteria, ok := vars["searchCriteria"]
 	if !ok {
 		w.WriteHeader(http.StatusBadRequest)
 		fmt.Fprint(w, `No search criteria found`)
+		log.Println(criteria)
+		log.Println(r)
 		return
 	}
 
@@ -51,7 +55,10 @@ func (handler *DinoRESTAPIHandler) searchHandler(w http.ResponseWriter, r *http.
 		animal, err = handler.dbhandler.GetDinoByNickname(searchKey)
 	case "type":
 		animals, err = handler.dbhandler.GetDinosByType(searchKey)
+		log.Println(animals)
+		log.Println(err)
 		if len(animals) > 0 {
+			log.Println(animals)
 			//HTTP response writer is passed into a JSON encoder and the animals array is encoded into the response writer
 			json.NewEncoder(w).Encode(animals)
 			return
